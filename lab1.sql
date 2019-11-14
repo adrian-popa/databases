@@ -42,7 +42,8 @@ CREATE TABLE Planet (
 	EquatorialDiameter float,
 	Mass float,
 	Atmosphere varchar(64),
-	PlanetarySystemID int REFERENCES PlanetarySystem(PlanetarySystemID)
+	PlanetarySystemID int REFERENCES PlanetarySystem(PlanetarySystemID),
+	StarID int
 );
 
 CREATE TABLE NaturalSatellite (
@@ -79,9 +80,10 @@ CREATE TABLE Engine (
 );
 
 CREATE TABLE Propulsion (
-	PropulsionID int NOT NULL PRIMARY KEY,
+	PropulsionID int NOT NULL,
 	RocketID int REFERENCES Rocket(RocketID),
-	EngineID int REFERENCES Engine(EngineID)
+	EngineID int REFERENCES Engine(EngineID),
+	CONSTRAINT PK_Propulsion PRIMARY KEY (PropulsionID)
 )
 
 -- Only for emergencies (DESTROY DB)

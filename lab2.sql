@@ -33,8 +33,8 @@ VALUES (1, 'rocky habitable planet'),
 	   (2, 'dry red planet');
 
 INSERT INTO Planet
-VALUES (1, 'Earth', 1, 12742, 5.972e+24, 'nitrogen-oxygen mixture', 1),
-	   (2, 'Mars', 2, 6779, 6.39e+23, 'carbon-dioxide-nitrogen mixture', 1);
+VALUES (1, 'Earth', 1, 12742, 5.972e+24, 'nitrogen-oxygen mixture', 1, 1),
+	   (2, 'Mars', 2, 6779, 6.39e+23, 'carbon-dioxide-nitrogen mixture', 1, 2);
 
 INSERT INTO Rocket
 VALUES (1, 'Falcon 9', 'LOX / RP-1'),
@@ -282,7 +282,7 @@ HAVING S.Mass > (
 -- i. 4 queries using ANY and ALL to introduce a subquery in the WHERE clause; 2 of them should be rewritten with aggregation operators, while the other 2 should also be expressed with [NOT] IN.
 
 -- Get the Names of the PlanetarySystems whose Age is greater than any of the PlanetarySystems from the Galaxy with ID 2, sorted in alphabetical order.
-SELECT PS.Name
+SELECT TOP 2 PS.Name
 FROM PlanetarySystem PS
 WHERE PS.Age > ANY (
 	SELECT PS2.Age
