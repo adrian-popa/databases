@@ -14,14 +14,13 @@ CREATE TABLE Rocket (
 CREATE TABLE Mission (
 	ShipID int NOT NULL,
 	LocationID int NOT NULL,
-	CONSTRAINT PK_Mission PRIMARY KEY (ShipID, LocationID)
+	CONSTRAINT PK_Mission PRIMARY KEY(ShipID, LocationID)
 );
 
 GO 
 CREATE VIEW ViewPlanet
 AS 
-	SELECT * 
-	FROM Planet 
+	SELECT * FROM Planet
 
 GO
 CREATE OR ALTER VIEW ViewRocket
